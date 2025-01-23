@@ -7,7 +7,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Configure MySQL database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:root@localhost/hireflow'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:admin@localhost/hireflow'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialize the SQLAlchemy object
@@ -15,7 +15,7 @@ db = SQLAlchemy(app)
 
 # Example table
 class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)  # Auto-increment the ID
     name = db.Column(db.String(100))
 
 @app.route('/api/users', methods=['GET'])
@@ -26,5 +26,5 @@ def get_users():
 if __name__ == '__main__':
     # Create tables in the database
     with app.app_context():
-        db.create_all()
+        db.create_all()  
     app.run(debug=True)

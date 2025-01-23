@@ -1,13 +1,14 @@
 import './App.css'
-
+import UserList from './components/UserList';
 function App() {
 
 
   return (
     <>
-      <body className='bg-blue-500'>
-
-      </body>
+      <div className="App">
+      <h1>Welcome to HireFlow</h1>
+      <UserList />
+    </div>
     </>
   )
 }
