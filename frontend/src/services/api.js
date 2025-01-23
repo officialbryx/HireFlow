@@ -15,7 +15,7 @@ import axios from 'axios';
 
 // Centralized Axios instance
 const api = axios.create({
-  baseURL: 'http://localhost:8000', // Replace with your actual API base URL
+  baseURL: 'http://127.0.0.1:5000', // Replace with your actual API base URL
   timeout: 10000, // Optional: Set a timeout for requests
   headers: {
     'Content-Type': 'application/json',
