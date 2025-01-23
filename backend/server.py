@@ -113,28 +113,47 @@ def get_users():
     logger.info("Fetched all users")
     return jsonify([{'id': user.id, 'username': user.username, 'email': user.email} for user in users])
 
-# Delete user route
-@app.route('/delete_user', methods=['DELETE'])
-def delete_user():
-    data = request.get_json()
-    email = data.get('email')
-
-    # Validate input
-    if not email:
-        logger.warning("Missing email")
-        return jsonify({"message": "Missing email"}), 400
-
-    # Find user by email
-    user = User.query.filter_by(email=email).first()
+# Get a single user by ID
+@app.route('/users/<int:user_id>', methods=['GET'])
+def get_user(user_id):
+    user = User.query.get(user_id)
     if not user:
-        logger.warning(f"User with email {email} not found")
+        return jsonify({"message": "User not found"}), 404
+    return jsonify({
+        "id": user.id,
+        "username": user.username,
+        "email": user.email,
+        "role": user.role
+    }), 200
+
+# Update a user by ID
+@app.route('/users/<int:user_id>', methods=['PUT'])
+def update_user(user_id):
+    data = request.get_json()
+    user = User.query.get(user_id)
+    if not user:
         return jsonify({"message": "User not found"}), 404
 
-    # Delete user
+    # Update user details
+    if 'username' in data:
+        user.username = data['username']
+    if 'email' in data:
+        user.email = data['email']
+    if 'password' in data:
+        user.password_hash = bcrypt.generate_password_hash(data['password']).decode('utf-8')
+
+    db.session.commit()
+    return jsonify({"message": "User updated successfully"}), 200
+
+# Delete a user by ID
+@app.route('/users/<int:user_id>', methods=['DELETE'])
+def delete_user(user_id):
+    user = User.query.get(user_id)
+    if not user:
+        return jsonify({"message": "User not found"}), 404
+
     db.session.delete(user)
     db.session.commit()
-
-    logger.info(f"User {user.username} deleted successfully")
     return jsonify({"message": "User deleted successfully"}), 200
 
 if __name__ == '__main__':
