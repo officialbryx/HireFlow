@@ -6,9 +6,17 @@ Architecture Overview
 Step by step process to make sure that this website is working when setting it up
 Install Node.js and npm
 
+Frontend dependencies:
 Install axios for API calls
 (Note: Install inside react app, froontend directory)
 npm install axios
+
+Install Vite for frontend framework
+npm create vite@latest then follow the prompts
+Official vite guide:https://vite.dev/guide/
+
+Install tailwindcss for styling
+Tailwind install guide https://tailwindcss.com/docs/installation/using-vite
 
 For MacOS
 
@@ -44,7 +52,10 @@ source /path/to/your/ven/bin/activate (For MacOS)
 
 Install Flask and Database Libraries
 Install Flask and database-related packages
+without requirements.txt:
 pip install flask -flask-cors flask-sqlalchemy mysql-connector-python
+with requirements.txt:
+pip install -r requirements.txt
 
 Configure MySQL database in server.py (Change the values depending on the name of username, password, and name of the database 'hireflow'
 

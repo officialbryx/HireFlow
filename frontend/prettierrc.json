@@ -1,0 +1,9 @@
+{
+    "printWidth": 120,
+    "plugins": ["prettier-plugin-tailwindcss"],
+    "tailwindStylesheet": "./src/app/App.css",
+    "tailwindConfig": "./tailwind.config.js",
+    "tailwindFunctions": ["clsx", "cn", "tw"],
+    "tailwindPreserveWhitespace": true,
+    "tailwindPreserveDuplicates": false
+  }
