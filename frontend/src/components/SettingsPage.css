@@ -1,0 +1,47 @@
+.settings-container {
+    /* background-color: #0f0f2d; */
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 50%;
+    margin: auto;
+  }
+  
+  h2 {
+    font-size: 24px;
+  }
+  
+  .settings-section {
+    background-color: #2a2a4b;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+  
+  h3 {
+    font-size: 18px;
+  }
+  
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+  }
+  
+  .edit-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  select {
+    background: #191932;
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  
