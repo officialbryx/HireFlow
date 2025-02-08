@@ -1,16 +1,19 @@
-import "./App.css";
-import UserList from "./components/UserList";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import NavBar from "./components/NavBar";
+import JobPosts from "./components/JobPost";
+import SettingsPage from "./components/SettingsPage";
 
 function App() {
   return (
-    <>
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="bg-red-100 max-w-3xl w-full p-4 rounded-lg shadow-md">
-          <h1 className="mb-4 text-2xl font-bold text-center">Welcome to HireFlow</h1>
-          <UserList />
-        </div>
-      </div>
-    </>
+    <Router>
+      <NavBar />
+      <Routes>
+        <Route path="/dashboard" element={<h2>Dashboard Page</h2>} />
+        <Route path="/job-post" element={<JobPosts/>} />
+        <Route path="/settings" element={<SettingsPage/>} />
+      </Routes>
+    </Router>
   );
 }
 

@@ -1,0 +1,17 @@
+.job-list {
+    margin-top: 20px;
+    color: white;
+  }
+  
+  .job-card {
+    background: #2a2a3c;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .job-card h4 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
